@@ -4,14 +4,22 @@ import java.util.Scanner;
 
 public class HomeWorkThree {
     public static void main(String[] args) {
+        System.out.println("TASK 1 ==========================");
         taskOne();
+        System.out.println("TASK 2 ==========================");
         taskTwo();
+        System.out.println("TASK 3 ==========================");
         taskThree();
+        System.out.println("TASK 4 ==========================");
         taskFour();
+        System.out.println("TASK * ==========================");
         taskWithStar();
 
+        System.out.println("PRACTICE 1 ==========================");
         practiceOne();
+        System.out.println("PRACTICE 2 ==========================");
         practiceTwo();
+        System.out.println("PRACTICE 3 ==========================");
         practiceThree();
     }
 
@@ -19,9 +27,7 @@ public class HomeWorkThree {
     //    будет выводить сообщение четное число или нет. Для определения четности числа
     //    используйте операцию получения остатка от деления (операция выглядит так: '% 2').
     public static void taskOne() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Введите число: ");
-        int number = input.nextInt();
+        int number = inputIntPositiveNumber();
 
         if (number % 2 == 0) {
             System.out.println("Четное число");
@@ -33,9 +39,8 @@ public class HomeWorkThree {
     //    Для введенного числа t (температура на улице) вывести: Если t>–5, то вывести «Warm».
     //    Если –5>= t > –20, то вывести «Normal». Если –20>= t, то вывести «Cold».
     public static void taskTwo() {
-        Scanner input = new Scanner(System.in);
         System.out.print("Введите температуру: ");
-        int temp = input.nextInt();
+        int temp = inputIntPositiveNumber();
 
         if (temp > -5) {
             System.out.println("Warm");
@@ -72,15 +77,7 @@ public class HomeWorkThree {
     //    числа воспользуйтесь классом Scanner. Сделать проверку, чтобы пользователь не мог
     //    ввести некорректные данные.
     public static void taskWithStar() {
-        Scanner input = new Scanner(System.in);
-        System.out.println("Введите число: ");
-
-        int number = input.nextInt();
-
-        if (number < 1) {
-            System.out.println("Не корректное число");
-            return;
-        }
+        int number = inputIntPositiveNumber();
 
         int amount = 0;
         int i = 1;
@@ -90,16 +87,15 @@ public class HomeWorkThree {
             i += 1;
         }
 
-        System.out.printf("Сумма от %d до %d = %d", 1, number, amount);
+        System.out.printf("Сумма от %d до %d = %d\n", 1, number, amount);
     }
 
     //    Ввести с консоли любое число от 1 до 12. В зависимости от введённого числа вывести в
     //    консоль соответствующую пору года по номеру месяца. При решении использовать
     //      switch
     public static void practiceOne() {
-        Scanner input = new Scanner(System.in);
-        System.out.print("Введите номер месяца: ");
-        int numberMonth = input.nextInt();
+        System.out.println("Введите номер месяца: ");
+        int numberMonth = inputIntPositiveNumber();
 
         switch (numberMonth) {
             case 1:
@@ -144,5 +140,30 @@ public class HomeWorkThree {
 
             if (i % 2 == 0) System.out.printf("%d ", i);
         }
+    }
+
+    public static int inputIntPositiveNumber() {
+        System.out.println("Введите число: ");
+        Scanner input = new Scanner(System.in);
+        boolean isValidNumber = false;
+        int number = 0;
+
+        while (!isValidNumber) {
+            if (!input.hasNextInt()) {
+                System.out.println("Введеннное значение должно быть целым");
+                input.next();
+                continue;
+            }
+
+            number = input.nextInt();
+
+            if (number > 0) {
+                isValidNumber = true;
+            } else  {
+                System.out.println("Число должно быть положительным");
+            }
+        }
+
+        return number;
     }
 }
