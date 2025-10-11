@@ -12,11 +12,13 @@ public class HomeWorkFour {
 //        int[] arr = handleInputArrItems(arrLength);
 
         // Task 1
-        System.out.println("TASK 1 ==========");
+        System.out.println("\nTASK 1 ==========\n");
         printArr(arr);
+        System.out.println("\nВ обратном порядке: \n");
+        printReverseArr(arr);
 
         // Task 2
-        System.out.println("TASK 2 ==========");
+        System.out.println("\nTASK 2 ==========\n");
         int[] maxMin = getMaxMinNumbers(arr);
         System.out.printf("Min -> %d\n", maxMin[0]);
         System.out.printf("Max -> %d\n", maxMin[1]);
@@ -28,17 +30,24 @@ public class HomeWorkFour {
         System.out.printf("Max idx -> %d\n", maxMinIdx[1]);
 
         // Task 4
-        System.out.println("TASK 4 ==========");
+        System.out.println("\nTASK 4 ==========\n");
         int countZeroElements = getCountZeroElements(arr);
         System.out.printf("Количество 0-ых элементов в массиве -> %d\n", countZeroElements);
 
+        if (countZeroElements == 0) {
+            System.out.println("\nНулевых элементов в массиве нет\n");
+        }
+
         // Task 5
-        System.out.println("TASK 5 ==========");
+        System.out.println("\nTASK 5 ==========\n");
         int[] swappedArr = swapElements(arr);
-        System.out.println("Swapped массив:");
+        System.out.println("\nИсходный массив:\n");
+        printArr(arr);
+        System.out.println("\nSwapped массив:\n");
         printArr(swappedArr);
         
         // Task 6
+        System.out.println("\nTASK 6 ==========\n");
         boolean isIncreasing = isIncreasingArr(arr);
         
         if (isIncreasing) {
@@ -48,7 +57,7 @@ public class HomeWorkFour {
         }
 
         // Task *
-        System.out.println("TASK * ==========");
+        System.out.println("\nTASK * ==========\n");
         int[] increaseArr = taskWithStar();
         printArr(increaseArr);
     }
@@ -57,6 +66,12 @@ public class HomeWorkFour {
     // Пройти по массиву, вывести все элементы в прямом и в обратном порядке.
     public static void printArr(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
+            System.out.printf("%d-й элумент массива = %d\n", i, arr[i]);
+        }
+    }
+
+    public static void printReverseArr(int[] arr) {
+        for (int i = arr.length - 1; i >=0; i--) {
             System.out.printf("%d-й элумент массива = %d\n", i, arr[i]);
         }
     }
