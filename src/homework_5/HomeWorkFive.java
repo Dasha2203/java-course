@@ -5,41 +5,66 @@ import java.util.Scanner;
 
 public class HomeWorkFive {
     public static void main(String[] args) {
-        System.out.println("Введите количество строк (m): ");
-        int m = inputIntPositiveNumber(true);
-
-        System.out.println("Введите количество столбцов (n): ");
+        System.out.println("Введите количество строк (n):");
         int n = inputIntPositiveNumber(true);
 
-        System.out.println("Введите минимальное значение (min): ");
+        System.out.println("Введите количество столбцов (m):");
+        int m = inputIntPositiveNumber(true);
+
+        System.out.println("Введите минимальное значение (min):");
         int min = inputIntPositiveNumber(true);
 
-        System.out.println("Введите максимальное значение (max): ");
+        System.out.println("Введите максимальное значение (max):");
         int max = inputIntPositiveNumber(true);
 
-        int[][] arr = generateMultiDimensionalArray(m, n, min, max);
+        int[][] arr = generateMultiDimensionalArray(n, m, min, max);
 
         System.out.println("Исходный массив:");
-        printMultiArr(arr);
+        printIntMultiArr(arr);
 
-        System.out.println("Введите число, которое нужно добавить к каждому элементу массива: ");
+        System.out.println("Введите число, которое нужно добавить к каждому элементу массива:");
         int incrementNumber = inputIntPositiveNumber(true);
-
 
         int[][] incrementedArr = addNumberToEachElementMultiArray(arr, incrementNumber);
         System.out.println("Массив после добавления числа:");
-        printMultiArr(incrementedArr);
+        printIntMultiArr(incrementedArr);
 
+        // Task 2
+        System.out.println("Шахмотная доска:");
+        String[][] board = generateChessBoard();
+        printStringMultiArr(board);
 
+        // Task 3
+        System.out.println("Массив - змейка:");
+        int[][] snakeArr = generateSnakeArr(n, m);
+        printIntMultiArr(snakeArr);
     }
 
-    public static int[][] generateMultiDimensionalArray(int m, int n, int min, int max) {
-        int[][] arr = new int[m][n];
+    public static int[][] generateSnakeArr(int n, int m) {
+        int[][] arr = new int[n][m];
+        int counter = 0;
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                if (i % 2 != 0 ){
+                    arr[i][m - j - 1] = counter;
+                } else {
+                    arr[i][j] = counter;
+                }
+                counter++;
+            }
+        }
+
+        return arr;
+    }
+
+    public static int[][] generateMultiDimensionalArray(int n, int m, int min, int max) {
+        int[][] arr = new int[n][m];
         Random rnd = new Random();
 
-        for (int i = 0; i < m; i++) {
-            for (int j = 0; j < n; j++) {
-                arr[i][j] = rnd.nextInt(max) + 1;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                arr[i][j] = rnd.nextInt(max - min + 1) + min;
             }
         }
 
@@ -94,23 +119,63 @@ public class HomeWorkFive {
             for (int j = 0; j < countCols; j++) {
                 localArr[i][j] = arr[i][j];
             }
-
         }
 
         return localArr;
     }
 
-    public static void printMultiArr(int[][] arr) {
+    public static void printIntMultiArr(int[][] arr) {
         int countRows = arr.length;
         int countCols = arr[0].length;
 
         for (int i = 0; i < countRows; i++) {
             for (int j = 0; j < countCols; j++) {
-                int value = arr[i][j];
-                System.out.print(" " + value);
+                String formatted = String.format("%3d", arr[i][j]);
+                System.out.print(formatted + " ");
+//                if (value.length() == 1) {
+//                    System.out.print(" " + "  " + value);
+//                } else if (value.length() == 2) {
+//                    System.out.print(" " + " " + value);
+//                } else {
+//                    System.out.print(" " + value);
+//                }
+
+
                 if (j == countCols - 1) System.out.println();
             }
         }
+    }
+
+    public static void printStringMultiArr(String[][] arr) {
+        int countRows = arr.length;
+        int countCols = arr[0].length;
+
+        for (int i = 0; i < countRows; i++) {
+            for (int j = 0; j < countCols; j++) {
+                String value = arr[i][j];
+                System.out.print(" " + value);
+
+                if (j == countCols - 1) System.out.println();
+            }
+        }
+    }
+
+    public static String[][] generateChessBoard() {
+        int countRows = 8;
+        int countCols = 8;
+        String[][] board = new String[countRows][countCols];
+
+        for (int i = 0; i < countRows; i++) {
+            for (int j = 0; j < countCols; j++) {
+                if ((i + j) % 2 == 0) {
+                    board[i][j] = "W";
+                } else {
+                    board[i][j] = "B";
+                }
+            }
+        }
+
+        return board;
     }
 
 }
