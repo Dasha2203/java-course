@@ -6,7 +6,7 @@ public class HomeWorkFour {
     public static void main(String[] args) {
         System.out.print("Введите количество элементов массива: ");
 
-        int arrLength = inputIntPositiveNumber(false);
+        int arrLength = inputIntPositiveNumber(false, Integer.MAX_VALUE);
 
         int[] arr = generateArrItems(arrLength, 0, 9);
 //        int[] arr = handleInputArrItems(arrLength);
@@ -163,12 +163,12 @@ public class HomeWorkFour {
     public static int[] taskWithStar() {
         System.out.print("Введите количество элементов массива: ");
 
-        int arrLength = inputIntPositiveNumber(false);
+        int arrLength = inputIntPositiveNumber(false, Integer.MAX_VALUE);
         int[] arr = new int[arrLength];
 
         for (int i = 0; i < arr.length; i++) {
             System.out.printf("Введите %d-й элемент массива: ", i + 1);
-            arr[i] = inputIntPositiveNumber(arr.length == 1);
+            arr[i] = inputIntPositiveNumber(arr.length == 1, 9);
         }
 
         boolean isCrowded = false;
@@ -207,7 +207,7 @@ public class HomeWorkFour {
 
         for (int i = 0; i < length; i++) {
             System.out.printf("Введите %d-й элемент массива: ", i + 1);
-            arr[i] = inputIntPositiveNumber(true);
+            arr[i] = inputIntPositiveNumber(true, 9);
         }
 
         return arr;
@@ -234,13 +234,12 @@ public class HomeWorkFour {
         return (int) (Math.random() * (range + 1)) + min;
     }
 
-    public static int inputIntPositiveNumber(boolean isCanBeZero) {
+    public static int inputIntPositiveNumber(boolean isCanBeZero, int limit) {
         System.out.println("Введите число: ");
         Scanner input = new Scanner(System.in);
-        boolean isValidNumber = false;
         int number = 0;
 
-        while (!isValidNumber) {
+        while (true) {
             if (!input.hasNextInt()) {
                 System.out.println("Введеннное значение должно быть целым числом");
                 input.next();
@@ -249,10 +248,15 @@ public class HomeWorkFour {
 
             number = input.nextInt();
 
+            if (number > limit) {
+                System.out.printf("Число должно быть меньше, либо равно %d\n", limit);
+                continue;
+            }
+
             if ((number > 0 && !isCanBeZero) || (isCanBeZero && number >= 0)) {
-                isValidNumber = true;
-            } else  {
-                System.out.println("Число должно быть положительным");
+                break;
+            } else {
+                System.out.println("Число должно быть положительным\n");
             }
         }
 
