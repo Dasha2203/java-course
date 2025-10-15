@@ -16,6 +16,9 @@ public class HomeWorkSix {
         System.out.println("\nCredit card 3: \n");
         creditCardThree.showCardInfo();
 
+        System.out.println("\nCredit one add: " + 500.89);
+        System.out.println("Credit two add: " + 490.9);
+        System.out.println("Credit two withdraw: " + 55.87);
         creditCardOne.addFunds(500.89);
         creditCardTwo.addFunds(490.9);
         creditCardThree.withdraw(55.87);
