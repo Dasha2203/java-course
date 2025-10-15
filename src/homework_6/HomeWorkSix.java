@@ -42,12 +42,20 @@ public class HomeWorkSix {
         // ============== TASK 2 *
 
         System.out.println("\n============== TASK *\n");
-        ATM atm = new ATM(10, 5, 3);
+        ATM atm = new ATM(10, 25, 3);
 
-        if (atm.withdraw(1000)) {
+        // check big number
+        if (atm.withdraw(15000)) {
             System.out.println("You withdrew the money");
         } else {
             System.out.println("There are not enough funds in the ATM");
+        }
+
+        // when we have a small number of large bills
+        if (atm.withdraw(500)) {
+            System.out.println("\nYou withdrew the money");
+        } else {
+            System.out.println("\nThere are not enough funds in the ATM");
         }
 
         if (atm.withdraw(320)) {
@@ -130,13 +138,13 @@ class ATM {
     public boolean withdraw(int amount) {
         if (amount > this.currentAmount) return false;
 
-        int count100 = amount / 100;
+        int count100 = Math.min(amount / 100, this.banknotes100Count);
         int restAmount = amount - count100 * 100;
 
-        int count50 = restAmount / 50;
+        int count50 = Math.min(restAmount / 50, this.banknotes50Count);
         restAmount -= count50 * 50;
 
-        int count20 = restAmount / 20;
+        int count20 = Math.min(restAmount / 20, this.banknotes20Count);
         restAmount -= count20 * 20;
 
         if (restAmount == 0) {
