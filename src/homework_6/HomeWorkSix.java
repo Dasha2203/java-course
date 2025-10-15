@@ -2,7 +2,7 @@ package homework_6;
 
 public class HomeWorkSix {
     public static void main(String[] args) {
-        // ============== TASK 1
+        // ============== TASK 1 =================
         CreditCard creditCardOne = new CreditCard(100, 12345678);
         CreditCard creditCardTwo = new CreditCard(500, 87654321);
         CreditCard creditCardThree = new CreditCard(1000, 88888888);
@@ -39,7 +39,7 @@ public class HomeWorkSix {
         System.out.println("\nCredit card 3: \n");
         creditCardThree.showCardInfo();
 
-        // ============== TASK 2 *
+        // ============== TASK 2 * =============
 
         System.out.println("\n============== TASK *\n");
         ATM atm = new ATM(10, 25, 3);
