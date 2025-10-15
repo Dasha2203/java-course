@@ -66,13 +66,13 @@ public class HomeWorkFour {
     // Пройти по массиву, вывести все элементы в прямом и в обратном порядке.
     public static void printArr(int[] arr) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%d-й элимент массива = %d\n", i, arr[i]);
+            System.out.printf("%d-й элемент массива = %d\n", i, arr[i]);
         }
     }
 
     public static void printReverseArr(int[] arr) {
         for (int i = arr.length - 1; i >=0; i--) {
-            System.out.printf("%d-й элимент массива = %d\n", i, arr[i]);
+            System.out.printf("%d-й элемент массива = %d\n", i, arr[i]);
         }
     }
 
