@@ -21,5 +21,13 @@ public class HomeworkEight {
         rabbit.eat("Live chicken");
         rabbit.eat("grass");
         dog.eat("meat");
+
+        System.out.println("Dog static: \n");
+        DogStatic dogStatic = DogStatic.createDog("DogStatic name", 20);
+        dogStatic.voice();
+        dogStatic.eat("meat");
+
+        DogStatic.staticEat("grass");
+        DogStatic.staticVoice();
     }
 }
