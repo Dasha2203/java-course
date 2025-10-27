@@ -36,13 +36,12 @@ public class HomeworkNine {
         System.out.println(clonedCircle.toString());
         System.out.println(clonedCircle == circle);
 
-        System.out.println("\n========== without clonable interface\n");
+        System.out.println("\n========== without clonable interface (will be error)\n");
         Rectangle rectangle = new Rectangle(2, 2);
         Rectangle clonedRectangle = rectangle.clone();
 
         System.out.println(rectangle.toString());
         System.out.println(rectangle == clonedRectangle);
-
 
     }
 }
