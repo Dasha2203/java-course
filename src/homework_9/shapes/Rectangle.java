@@ -18,4 +18,10 @@ public class Rectangle extends Shape {
     public double getSquare() {
         return this.a * this.b;
     }
+
+    @Override
+    public Rectangle clone() throws CloneNotSupportedException {
+        return (Rectangle) super.clone();
+    }
+
 }

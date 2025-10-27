@@ -1,10 +1,15 @@
 package homework_9.shapes;
 
-public class Circle extends Shape {
+public class Circle extends Shape implements Cloneable {
     double radius;
 
     public Circle(double radius) {
         this.radius = radius;
+    }
+
+    @Override
+    public Circle clone() throws CloneNotSupportedException {
+        return (Circle) super.clone();
     }
 
     @Override
