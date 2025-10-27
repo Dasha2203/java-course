@@ -1,4 +1,4 @@
-package homework_9;
+package homework_9.shapes;
 
 abstract class Shape {
     public abstract double getSquare();
