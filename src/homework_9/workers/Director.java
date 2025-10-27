@@ -1,4 +1,4 @@
-package homework_9;
+package homework_9.workers;
 
 
 public class Director implements Employee {

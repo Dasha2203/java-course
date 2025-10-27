@@ -1,4 +1,4 @@
-package homework_9;
+package homework_9.workers;
 
 public class Accountant implements Employee {
     String position = "Accountant";
