@@ -1,12 +1,12 @@
 package homework_9.shapes;
 
-abstract class Shape {
+public abstract class Shape {
     public abstract double getSquare();
     public abstract double getPerimeter();
 
     public String toString() {
-        return "Фигура: " + this.getClass().getSimpleName() +
-                "Площадь: " + String.format("%.2f", getSquare()) +
-                "Периметр: " + String.format("%.2f", getPerimeter());
+        return "\nФигура: " + this.getClass().getSimpleName() +
+                "\nПлощадь: " + String.format("%.2f", getSquare()) +
+                "\nПериметр: " + String.format("%.2f", getPerimeter());
     }
 }
