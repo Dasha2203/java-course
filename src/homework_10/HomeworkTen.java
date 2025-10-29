@@ -26,59 +26,40 @@ public class HomeworkTen  {
         System.out.println("Введите ID пользователя для клонирования (например, 1): ");
         int id = scanner.nextInt();
 
+        User clonedUser = null;
+        User originalUser = null;
+
         for (User user: users) {
             if (id == user.getId()) {
                 if (cloningType == 2) {
-                    System.out.println("=".repeat(50) + " Deep clone");
-
-                    User deepClonedUser = user.deepClone();
-                    System.out.println("\nСкопированный пользователь: ");
-                    System.out.println(deepClonedUser);
-                    System.out.println("\nОригинал: ");
-                    System.out.println(user);
-                    System.out.println("Равенство скопированного пользователя: " + user.equals(deepClonedUser));
-
-
-                    System.out.println("\nИзменение ссылочного типа PC (в одном изменится)");
-                    deepClonedUser.getPc().setOs("Deep os");
-
-                    System.out.println("\nСкопированный пользователь: ");
-                    System.out.println(deepClonedUser);
-                    System.out.println("\nОригинал: ");
-                    System.out.println(user);
-
-                    System.out.println("Равенство скопированного пользователя: " + user.equals(deepClonedUser));
+                    clonedUser = user.deepClone();
+                    originalUser = user;
                 } else if (cloningType == 1) {
-                    System.out.println("=".repeat(50) + " Shallow clone");
-                    System.out.println("Копирование:");
-                    User clonedUser = user.clone();
-                    System.out.println("Скопированный пользователь: ");
-                    System.out.println(clonedUser);
-                    System.out.println("Оригинал: ");
-                    System.out.println(user);
-                    System.out.println("Равенство скопированного пользователя: " + user.equals(clonedUser));
-
-                    user.setName("Dasha test change name");
-                    System.out.println(user.getName());
-                    System.out.println(clonedUser.getName());
-
-                    System.out.println("Равенство скопированного пользователя: " + user.equals(clonedUser));
-
-                    System.out.println("=".repeat(50));
-
-                    System.out.println("\nИзменение ссылочного типа PC (в обоих объектах изменения)");
-                    user.getPc().setOs("Test change");
-                    System.out.println("\nСкопированный пользователь: ");
-                    System.out.println(clonedUser);
-                    System.out.println("\nОригинал: ");
-                    System.out.println(user);
-                    System.out.println("Равенство скопированного пользователя: " + user.equals(clonedUser));
+                    clonedUser = user.clone();
+                    originalUser = user;
                 } else {
                     System.out.println("Пользователь с таким ID не найден.");
                     break;
                 }
             }
         }
+
+        System.out.println("\nСкопированный пользователь: ");
+        System.out.println(clonedUser);
+        System.out.println("\nОригинал: ");
+        System.out.println(originalUser);
+        System.out.println("Равенство скопированного пользователя: " + originalUser.equals(clonedUser));
+
+
+        System.out.println("\nИзменение ссылочного типа PC");
+        clonedUser.getPc().setOs("Deep os");
+
+        System.out.println("\nСкопированный пользователь: ");
+        System.out.println(clonedUser);
+        System.out.println("\nОригинал: ");
+        System.out.println(originalUser);
+
+        System.out.println("Равенство скопированного пользователя: " + originalUser.equals(clonedUser));
 
         scanner.close();
     }
