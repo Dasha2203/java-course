@@ -1,0 +1,5 @@
+docnum12345678 The length must be 15 symbols
+contract12345678 The length must be 15 symbols
+docnumabcdefgh The length must be 15 symbols
+docnum!!!123456 The doc must contains only numbers and letters
+docnun123456789 The doc must starts with docnum or contruct
