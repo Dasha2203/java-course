@@ -3,31 +3,6 @@ package homework_20;
 import java.util.Arrays;
 import java.util.Scanner;
 
-class MyTask implements Runnable {
-
-    public void run(){
-
-        String name = Thread.currentThread().getName();  // получаем имя текущего потока
-
-//        try{
-
-            System.out.println(name + " started...");
-
-            while(!Thread.currentThread().isInterrupted()){
-
-                System.out.println(name + " works");
-
-//                Thread.sleep(1000); // приостанавливаем поток на 1000 миллисекунд
-            }
-//        }
-//        catch(InterruptedException ex){
-//
-//            System.out.println("gkgkgkkgk" + ex.getMessage());
-//        }
-        System.out.println(name + " finished...");
-    }
-}
-
 public class HomeWorkTwenty {
     public static void main(String[] args) throws InterruptedException {
     //    Пользователь вводит с клавиатуры значение в массив. После чего запускаются два
@@ -83,5 +58,19 @@ public class HomeWorkTwenty {
         bubbleThread.join();
         insertThread.join();
         selectionThread.join();
+
+
+
+        //        Имеются сущности Магазин, Производитель, Покупатель. Цель задачи сделать так чтобы
+        //        производитель произвел 5 единиц продукта, а покупатель их купил. Пока производитель
+        //        не произвел продукт, покупатель не может его купить. При этом одновременно в магазине
+        //        может находиться не более 3 товаров.
+        Store store = new Store();
+
+        Thread producer = new Thread(new Producer(store));
+        Thread consumer = new Thread(new Consumer(store));
+
+        producer.start();
+        consumer.start();
     }
 }
