@@ -1,5 +1,6 @@
 package homework_20;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 class MyTask implements Runnable {
@@ -55,5 +56,32 @@ public class HomeWorkTwenty {
 
         System.out.println("Max: " + maxThread.getMax());
         System.out.println("Min: " + minThread.getMin());
+
+        //    Сортировка массива цифр в нескольких потоках различными алгоритмами:
+        //     сортировка вставками;
+        //     сортировка выбором;
+        //     сортировка пузырьком.
+        //    Каждый вид сортировки должен запускаться в отдельном потоке. После вывести
+        //    результат отсортированных массивов в консоль.
+
+       Thread bubbleThread = new Thread(() -> {
+            System.out.println("Bubble sort: " + Arrays.toString(SortArray.bubbleSort(arr)));
+        });
+
+        Thread selectionThread = new Thread(() -> {
+            System.out.println("Selection sort: " + Arrays.toString(SortArray.selectionSort(arr)));
+        });
+
+        Thread insertThread = new Thread(() -> {
+            System.out.println("Insert sort: " + Arrays.toString(SortArray.insertionSort(arr)));
+        });
+
+        bubbleThread.start();
+        insertThread.start();
+        selectionThread.start();
+
+        bubbleThread.join();
+        insertThread.join();
+        selectionThread.join();
     }
 }
